@@ -1,0 +1,12 @@
+## Interface: 110100
+## Title: SacrificeUI
+## Notes: Sacrifice Guild UI package - addon dependency checker, M+ dungeon helper, and configuration.
+## Author: Sacrifice Guild <US-Hyjal>
+## Version: 1.0.0
+## SavedVariables: SacrificeUIDB
+## X-Website: https://github.com/thezdin/sacrificeui
+
+Core.lua
+AddonChecker.lua
+DungeonHelper.lua
+DungeonData.lua
