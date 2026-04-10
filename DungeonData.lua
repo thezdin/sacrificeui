@@ -36,10 +36,10 @@ Register(585, {
         "Arcane Sentry - Crowd Dispersal (party damage)",
     },
     dispels = {
-        "Polymorph - magic CC on party member",
-        "Unstable Energy - magic DoT (Arcanotron Custos boss)",
-        "Consuming Void - magic DoT (Void Terror, use Stoneform)",
-        "Holy Fire - magic DoT (Lightward Healer, use Stoneform)",
+        "Arcane Magister - Polymorph (magic CC on party member)",
+        "Arcanotron Custos (Boss) - Unstable Energy (magic DoT)",
+        "Void Terror - Consuming Void (magic DoT, use Stoneform)",
+        "Lightward Healer - Holy Fire (magic DoT, use Stoneform)",
     },
     buffs = {
         "Sunblade Enforcer - Arcane Blade (self-buff, increases tank damage taken)",
@@ -74,12 +74,12 @@ Register(2526, {
         "Algeth'ar Echoknight - Arcane Smash (party damage, LoS)",
     },
     dispels = {
-        "Mana Void - magic debuff (Corrupted Manafiend)",
-        "Mystic Brand - magic debuff (Spectral Invoker)",
-        "Vicious Ambush - magic debuff (Arcane Ravager)",
+        "Corrupted Manafiend - Mana Void (magic debuff)",
+        "Spectral Invoker - Mystic Brand (magic debuff)",
+        "Arcane Ravager - Vicious Ambush (magic debuff)",
     },
     buffs = {
-        "Alpha Eagle - Raging Screech grants damage buff, purge if possible",
+        "Alpha Eagle - Raging Screech (damage buff, purge if possible)",
     },
     notes = {
         "Monotonous Lecture is the highest priority interrupt in this dungeon",
@@ -112,9 +112,9 @@ Register(2773, {
         "Zil'jan - Ritual Drums (party damage, avoid zones)",
     },
     dispels = {
-        "Necrotic Wave - magic debuff (Dread Souleater)",
-        "Ritual Sacrifice - magic debuff (Rokh'zal, use Freedom)",
-        "Spirit Rend - debuff (Tormented Shade, use Stoneform)",
+        "Dread Souleater - Necrotic Wave (magic debuff)",
+        "Rokh'zal - Ritual Sacrifice (magic, use Freedom)",
+        "Tormented Shade - Spirit Rend (debuff, use Stoneform)",
     },
     buffs = {},
     notes = {
@@ -146,14 +146,14 @@ Register(2774, {
         "Lightwrought - Burning Radiance (party damage + debuff, use Stoneform)",
     },
     dispels = {
-        "Null Sunder - magic debuff (Shadowguard Defender)",
-        "Blistering Smite - magic debuff (Lingering Image)",
-        "Suppression Field - magic debuff (Flux Engineer)",
-        "Dreadbellow - magic debuff (Null Sentinel)",
-        "Burning Radiance - debuff (Lightwrought, use Stoneform)",
+        "Shadowguard Defender - Null Sunder (magic debuff)",
+        "Lingering Image - Blistering Smite (magic debuff)",
+        "Flux Engineer - Suppression Field (magic, use Freedom)",
+        "Null Sentinel - Dreadbellow (magic debuff)",
+        "Lightwrought - Burning Radiance (debuff, use Stoneform)",
     },
     buffs = {
-        "Shadowguard Defender - Null Sunder self-buff, increases tank damage",
+        "Shadowguard Defender - Null Sunder (self-buff, increases tank damage)",
     },
     notes = {
         "Suppression Field can be removed with Blessing of Freedom",
@@ -183,11 +183,11 @@ Register(658, {
         "Glacieth - Cryoburst (party damage, avoid)",
     },
     dispels = {
-        "Curse of Torment - curse (Quarry Tormentor, use Stoneform)",
-        "Permeating Cold - debuff (Rimebone Coldwraith, use Freedom)",
+        "Quarry Tormentor - Curse of Torment (curse, use Stoneform)",
+        "Rimebone Coldwraith - Permeating Cold (debuff, use Freedom)",
     },
     buffs = {
-        "Plungetalon - Plungegrip grants self-buff, purge if possible",
+        "Plungetalon - Plungegrip (self-buff, purge if possible)",
     },
     notes = {
         "Icy Blast on Dreadpulse Lich is the most dangerous trash cast",
@@ -218,9 +218,9 @@ Register(1753, {
         "Void-Infused Destroyer - Eruption (party damage + avoid + magic debuff)",
     },
     dispels = {
-        "Chains of Subjugation - magic debuff (Merciless Subjugator, use Freedom)",
-        "Eruption - magic debuff (Void-Infused Destroyer)",
-        "Backstab - debuff (Ruthless Riftstalker)",
+        "Merciless Subjugator - Chains of Subjugation (magic, use Freedom)",
+        "Void-Infused Destroyer - Eruption (magic debuff)",
+        "Ruthless Riftstalker - Backstab (debuff)",
     },
     buffs = {
         "Dire Voidbender - Abyssal Enhancement (self-buff, purge/kick)",
@@ -252,13 +252,13 @@ Register(1209, {
         "Sun Talon Tamer - Mark of Death (debuff)",
     },
     dispels = {
-        "Blinding Light - magic CC (Blinding Sun Priestess)",
-        "Fiery Talon - magic debuff (Adept of the Dawn)",
-        "Solar Flame - magic debuff (Solar Construct)",
-        "Blade Rush - debuff (Adorned Bladetalon, use Stoneform)",
+        "Blinding Sun Priestess - Blinding Light (magic CC)",
+        "Adept of the Dawn - Fiery Talon (magic debuff)",
+        "Solar Construct - Solar Flame (magic debuff)",
+        "Adorned Bladetalon - Blade Rush (debuff, use Stoneform)",
     },
     buffs = {
-        "Adept of the Dawn - Fiery Talon self-buff, increases tank damage",
+        "Adept of the Dawn - Fiery Talon (self-buff, increases tank damage)",
     },
     notes = {
         "Repel is the highest priority kick - knocks party back + damage",
@@ -289,14 +289,14 @@ Register(2775, {
         "Phantasmal Mystic - Ephemeral Bloodlust (buff + tank buster, purge)",
     },
     dispels = {
-        "Spore Dispersal - magic debuff (Bloated Lasher)",
-        "Poison Blades - debuff (Ardent Cutthroat, use Stoneform)",
-        "Throw Axe - debuff (Spectral Axethrower, use Stoneform)",
+        "Bloated Lasher - Spore Dispersal (magic debuff)",
+        "Ardent Cutthroat - Poison Blades (debuff, use Stoneform)",
+        "Spectral Axethrower - Throw Axe (debuff, use Stoneform)",
     },
     buffs = {
         "Phantasmal Mystic - Ephemeral Bloodlust (purge/spellsteal, increases tank damage)",
-        "Ardent Cutthroat - Poison Blades self-buff",
-        "Devoted Woebringer - Pulsing Shriek self-buff",
+        "Ardent Cutthroat - Poison Blades (self-buff)",
+        "Devoted Woebringer - Pulsing Shriek (self-buff)",
     },
     notes = {
         "Poison Blades is the top priority kick - buffs mob + debuffs tank",

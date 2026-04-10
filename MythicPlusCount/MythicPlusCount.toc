@@ -1,0 +1,32 @@
+## Interface: 120001
+## Title: MythicPlusCount
+## Notes: Per-mob forces %, pull tracking, and predicted dungeon completion for Mythic+
+## Author: Noobheartx
+## Version: 1.2.0
+## SavedVariables: MythicPlusCountDB
+## OptionalDeps: Plater, Platynator, ElvUI, RyoUI, TidyPlates_ThreatPlates, LibEditMode, LibSharedMedia-3.0
+## DefaultState: enabled
+## IconTexture: Interface\AddOns\MythicPlusCount\AddonIcon
+## X-Curse-Project-ID: 1506765
+## X-Category: Dungeons & Raids
+## X-Website: https://github.com/noobheartx/MythicPlusCount
+## X-License: MIT
+
+core.lua
+data.lua
+fingerprints.lua
+util.lua
+tooltip.lua
+nameplates.lua
+adapters/blizzard_nameplates.lua
+adapters/plater.lua
+adapters/platynator.lua
+adapters/elvui.lua
+adapters/ryoui.lua
+adapters/threatplates.lua
+pull_tracker.lua
+progress_bar.lua
+minimap_button.lua
+extras.lua
+extras/auto_queue.lua
+options.lua
