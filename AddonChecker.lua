@@ -50,6 +50,7 @@ local closeButton   = nil
 local doneButton    = nil
 local perfFrame     = nil
 local statsFrame    = nil
+local durFrame      = nil
 local reminderPopup = nil
 local funnyFrame    = nil
 local navButtons      = {}
@@ -266,6 +267,83 @@ local function CreateStatsOverlay()
     statsFrame:SetScript("OnEvent", Update)
     Update()
     return statsFrame
+end
+
+-- ============================================================
+-- Durability warning overlay
+-- ============================================================
+
+local function CreateDurabilityWarning()
+    if durFrame then return durFrame end
+    durFrame = CreateFrame("Frame", "SacrificeUIDurabilityWarning", UIParent)
+    durFrame:SetAllPoints(UIParent)
+    durFrame:SetFrameStrata("HIGH")
+    durFrame:EnableMouse(false)
+    local txt = durFrame:CreateFontString(nil, "OVERLAY")
+    txt:SetFont("Fonts\\FRIZQT__.TTF", 50, "OUTLINE")
+    txt:SetShadowColor(0, 0, 0, 1); txt:SetShadowOffset(2, -2)
+    txt:SetText("Low Durability, Repair Now!")
+    durFrame.txt = txt
+    durFrame:Hide()
+    return durFrame
+end
+
+function SacrificeUI:CheckDurability()
+    local db = SacrificeUIDB
+    if not db or not db.durabilityEnabled then
+        if durFrame and durFrame:IsShown() then
+            durFrame:Hide(); durFrame:SetScript("OnUpdate", nil)
+        end
+        return
+    end
+
+    local threshold = db.durabilityThreshold or 40
+    local lowest = 100
+    if GetInventoryItemDurability then
+        for slot = 1, 18 do
+            local dur, maxDur = GetInventoryItemDurability(slot)
+            if dur and maxDur and maxDur > 0 then
+                local pct = math.floor((dur / maxDur) * 100)
+                if pct < lowest then lowest = pct end
+            end
+        end
+    end
+
+    local f = CreateDurabilityWarning()
+    if lowest <= threshold then
+        if not f:IsShown() then
+            local c = GetAccentColor()
+            local txt = f.txt
+            txt:SetFont("Fonts\\FRIZQT__.TTF", 50, "OUTLINE")
+            txt:ClearAllPoints()
+            txt:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+            txt:SetTextColor(c[1], c[2], c[3], 1.0)
+            f._elapsed = 0
+            f._phase   = 1
+            f:Show()
+            f:SetScript("OnUpdate", function(self, dt)
+                self._elapsed = self._elapsed + dt
+                local ac    = GetAccentColor()
+                local alpha = 0.5 + 0.5 * math.abs(math.sin(self._elapsed * math.pi))
+                if self._phase == 1 then
+                    self.txt:SetTextColor(ac[1], ac[2], ac[3], alpha)
+                    if self._elapsed >= 5.0 then
+                        self._phase   = 2
+                        self._elapsed = 0
+                        self.txt:SetFont("Fonts\\FRIZQT__.TTF", 20, "OUTLINE")
+                        self.txt:ClearAllPoints()
+                        self.txt:SetPoint("TOP", UIParent, "TOP", 0, -80)
+                    end
+                else
+                    self.txt:SetTextColor(ac[1], ac[2], ac[3], alpha)
+                end
+            end)
+        end
+    else
+        if f:IsShown() then
+            f:Hide(); f:SetScript("OnUpdate", nil)
+        end
+    end
 end
 
 -- ============================================================
@@ -508,6 +586,26 @@ local function BuildGeneralTab(parent)
     hint:SetTextColor(0.38, 0.38, 0.42)
     y = y - (hint:GetStringHeight() + 8)
 
+    Sep()
+
+    -- LOW DURABILITY
+    SH("LOW DURABILITY")
+
+    local durSliderCon
+    Row("Low Durability Warning", "durabilityEnabled", nil, function(enabled)
+        if durSliderCon then
+            if enabled then durSliderCon:Show() else durSliderCon:Hide() end
+        end
+        SacrificeUI:CheckDurability()
+    end)
+
+    durSliderCon = CreateSliderRow(sc, "Threshold %", 0, 100, 1, "durabilityThreshold", nil, W)
+    durSliderCon:SetPoint("TOPLEFT", sc, "TOPLEFT", 0, y)
+    y = y - 42
+    if not (SacrificeUIDB and SacrificeUIDB.durabilityEnabled) then
+        durSliderCon:Hide()
+    end
+
     sc:SetHeight(math.abs(y) + 20)
     return tab
 end
@@ -516,7 +614,7 @@ end
 local function BuildTalentRemindersTab(parent)
     local tab = CreateFrame("Frame", nil, parent)
     tab:SetAllPoints(parent); tab:Hide()
-    local W = parent:GetWidth() - 20
+    local W = 440
     local halfW = math.floor((W - 8) / 2)
 
     -- Shared state

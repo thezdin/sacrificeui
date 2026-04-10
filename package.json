@@ -1,0 +1,7 @@
+{
+  "name": "sacrificeui",
+  "private": true,
+  "scripts": {
+    "package": "bash scripts/package.sh"
+  }
+}

@@ -13,6 +13,7 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("ADDON_LOADED")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
 frame:RegisterEvent("CHALLENGE_MODE_START")
+frame:RegisterEvent("UNIT_DURABILITY_UPDATE")
 
 frame:SetScript("OnEvent", function(self, event, arg1)
     if event == "ADDON_LOADED" and arg1 == ADDON_NAME then
@@ -24,7 +25,9 @@ frame:SetScript("OnEvent", function(self, event, arg1)
             showStats            = false,
             mythicCountEnabled   = false,
             apiKey               = "",
-            talentReminders    = {},
+            talentReminders      = {},
+            durabilityEnabled    = false,
+            durabilityThreshold  = 40,
             -- Combat logging (LoggerHead)
             logEnabled       = false,
             logEnableAll     = false,
@@ -38,10 +41,13 @@ frame:SetScript("OnEvent", function(self, event, arg1)
         end
         SacrificeUI:ApplySettings()
         SacrificeUI:CheckAddons()
+    elseif event == "UNIT_DURABILITY_UPDATE" then
+        SacrificeUI:CheckDurability()
     elseif event == "PLAYER_ENTERING_WORLD" then
         SacrificeUI:CheckAddons()
         SacrificeUI:CheckTalentReminders()
         SacrificeUI:UpdateCombatLogging()
+        SacrificeUI:CheckDurability()
         if not SacrificeUIDB.helperDismissed then
             SacrificeUI:TryShowDungeonHelper()
         end

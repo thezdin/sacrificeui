@@ -1,5 +1,7 @@
 # SacrificeUI
 
+![Sacrifice Guild](sacrifice.png)
+
 World of Warcraft addon for **Sacrifice** guild on US-Hyjal.
 
 A single addon that manages dependencies, checks required addons are installed, and provides contextual M+ dungeon helpers.
